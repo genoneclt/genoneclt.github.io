@@ -233,13 +233,44 @@ a { color: inherit; }
 /* ---------- Flyout (fixed, bottom fourth of viewport) ---------- */
 .flyout {
   position: fixed; left: 0; bottom: calc(var(--flyout-bottom) + env(safe-area-inset-bottom)); z-index: 40;
-  display: grid; place-items: center; width: var(--flyout-size); height: calc(var(--flyout-size) * .85);
+  display: flex; align-items: center; gap: .5rem;
+  background: none;                      /* the container is only a theme scope */
+  padding-left: env(safe-area-inset-left);
+}
+.flyout__toggle {
+  display: grid; place-items: center; flex: none; width: var(--flyout-size); height: calc(var(--flyout-size) * .85);
+  border: 0; padding: 0; cursor: pointer;
   background: var(--color-accent); color: var(--color-accent-contrast);
   border-radius: 0 999px 999px 0; box-shadow: 0 2px 8px rgb(0 0 0 / .3);
-  padding-left: env(safe-area-inset-left);
   transition: width var(--transition);
 }
-.flyout:hover { width: calc(var(--flyout-size) * 1.2); }
+.flyout__toggle:hover { width: calc(var(--flyout-size) * 1.2); }
+.flyout__toggle svg { transition: rotate var(--transition); }
+.flyout__toggle[aria-expanded="true"] svg { rotate: 180deg; }
+
+/* Vertical segmented control: two joined buttons sharing one border */
+.flyout__menu {
+  display: flex; flex-direction: column; overflow: hidden;
+  border: var(--btn-border-w) solid var(--theme-sec-border); border-radius: var(--btn-radius);
+  background: var(--theme-sec-bg); box-shadow: 0 2px 8px rgb(0 0 0 / .3);
+  transition: opacity var(--transition), translate var(--transition), visibility var(--transition);
+}
+.flyout__segment {
+  display: flex; align-items: center; justify-content: center; min-width: 8.5rem; min-height: var(--btn-height);
+  padding-inline: var(--btn-pad-x);
+  font-weight: 700; font-size: var(--body-size); line-height: var(--body-lh);
+  letter-spacing: var(--action-ls); text-transform: uppercase; text-decoration: none;
+  color: var(--theme-sec-fg); background: var(--theme-sec-bg);
+  transition: var(--btn-transition);
+}
+.flyout__segment + .flyout__segment { border-top: var(--btn-border-w) solid var(--theme-sec-border); }
+.flyout__segment:hover, .flyout__segment:focus-visible { background: var(--theme-sec-bg-hover); color: var(--theme-sec-fg-hover); }
+
+/* With JS the menu is collapsed until the arrow is pressed (without JS it simply stays open) */
+.js .flyout__menu { opacity: 0; visibility: hidden; translate: -1rem 0; }
+.js .flyout__toggle[aria-expanded="true"] + .flyout__menu { opacity: 1; visibility: visible; translate: 0 0; }
+.flyout__toggle { display: none; }
+.js .flyout__toggle { display: grid; }
 
 /* ---------- Footer ---------- */
 .site-footer { position: relative; padding-block: var(--section-pad) calc(var(--section-pad) + env(safe-area-inset-bottom)); }

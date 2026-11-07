@@ -195,10 +195,16 @@
     </section>
   </main>
 
-  <!-- Flyout: stays visible in the bottom fourth of the viewport -->
-  <a class="flyout" href="https://www.genoneclt.org/apply" aria-label="Apply to GenOne">
-    <svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true" focusable="false"><path d="M3 12h16m-6-7 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  </a>
+  <!-- Flyout: stays visible in the bottom fourth of the viewport; the arrow expands a vertical segmented control -->
+  <div class="flyout theme-light-1">
+    <button class="flyout__toggle" type="button" aria-expanded="false" aria-controls="flyout-menu" aria-label="Quick actions">
+      <svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true" focusable="false"><path d="M3 12h16m-6-7 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div id="flyout-menu" class="flyout__menu" role="group" aria-label="Quick actions">
+      <a class="flyout__segment" href="https://genoneclt.org/apply">Apply</a>
+      <a class="flyout__segment" href="https://genoneclt.org/donate">Donate</a>
+    </div>
+  </div>
 
   <!-- ===== Footer ===== -->
   <footer class="site-footer theme-dark">
