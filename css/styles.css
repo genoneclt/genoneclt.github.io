@@ -18,8 +18,6 @@
   --color-accent: #e5383b;          /* flyout */
   --color-accent-contrast: #ffffff;
   --color-success: #2eaa5a;         /* back-to-top */
-  --color-banner-closed: #8a8a8a;
-  --color-banner-open: #efefef;
   --color-hero-overlay: rgba(0 0 0 / .25);
 
   /* Typography */
@@ -173,8 +171,8 @@ a { color: inherit; }
   display: flex; align-items: center; justify-content: center; gap: clamp(1rem, 4vw, 3rem);
   padding: 1rem var(--gutter); text-transform: uppercase; letter-spacing: var(--letter-caps);
 }
-.application--closed { background: var(--color-banner-closed); color: var(--color-text-inverse); }
-.application--open   { background: var(--color-banner-open);   color: var(--color-text); }
+/* Colours come from the theme class on each side (.theme-dark / .theme-light-2).
+   .application--middle-school and .application--high-school are hooks for per-type tweaks. */
 .application__title, .application__deadline { font-size: var(--fs-body); font-weight: 400; text-align: center; max-width: 12ch; }
 .application__deadline { max-width: none; }
 @media (max-width: 40rem) {
