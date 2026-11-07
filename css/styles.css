@@ -329,6 +329,7 @@ a { color: inherit; }
 .enrichment-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: var(--gap); margin-top: clamp(1.5rem, 4vw, 3rem); }
 .enrichment { display: flex; flex-direction: column; gap: .75rem; }
 .enrichment__media { aspect-ratio: 3 / 4; }
+img.enrichment__media { width: 100%; height: auto; object-fit: cover; object-position: center; } /* center-cropped to the placeholder ratio */
 
 /* FAQ accordion: native details/summary, no JS */
 .accordion { display: flex; flex-direction: column; }
