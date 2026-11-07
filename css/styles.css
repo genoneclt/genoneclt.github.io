@@ -265,19 +265,19 @@ a { color: inherit; }
 
 /* ---------- Footer ---------- */
 .site-footer { position: relative; padding-block: var(--section-pad) calc(var(--section-pad) + env(safe-area-inset-bottom)); }
-.site-footer__inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 4rem); }
+.site-footer__inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 4rem); }
 .site-footer__brand { display: flex; flex-direction: column; align-items: flex-start; gap: 1.25rem; }
 .site-footer address { line-height: 1.6; }
 .social { display: flex; gap: 1rem; }
 .social a { display: grid; place-items: center; width: 2.5rem; height: 2.5rem; border: var(--border-w) solid var(--color-border-inverse); border-radius: 50%; transition: background var(--transition); }
 .social a:hover { background: rgb(255 255 255 / .15); }
 .social svg { width: 1.25rem; height: 1.25rem; }
-.newsletter { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
-.newsletter__fields { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; width: 100%; font-size: var(--fs-small); }
+.newsletter { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; min-width: 0; }
+.newsletter__fields { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: .75rem; width: 100%; font-size: var(--fs-small); }
 .newsletter__email { grid-column: 1 / -1; }
 .newsletter label { display: flex; flex-direction: column; gap: .25rem; }
-.newsletter input { font: inherit; padding: .6rem .75rem; border: 1px solid var(--color-border-inverse); border-radius: .25rem; background: transparent; color: inherit; }
-@media (max-width: 52rem) { .site-footer__inner { grid-template-columns: 1fr; } }
+.newsletter input { width: 100%; min-width: 0; font: inherit; padding: .6rem .75rem; border: 1px solid var(--color-border-inverse); border-radius: .25rem; background: transparent; color: inherit; }
+@media (max-width: 52rem) { .site-footer__inner { grid-template-columns: minmax(0, 1fr); } }
 
 .to-top {
   position: absolute; right: var(--gutter); top: 1.25rem; width: 3rem; height: 3rem;
