@@ -347,3 +347,4 @@ a { color: inherit; }
 .faq[open] > .faq__q::after { content: "\2212"; }
 .faq__a { display: grid; gap: .75rem; padding-bottom: 1.25rem; }
 .faq__a a { color: inherit; text-decoration-color: var(--ds-red); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+@media (max-width: 40rem) { .enrichment__media { aspect-ratio: 4 / 3; } }
