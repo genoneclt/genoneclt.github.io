@@ -104,11 +104,8 @@ a { color: inherit; }
 .site-header__inner { display: flex; align-items: center; justify-content: space-between; min-height: var(--header-h); gap: var(--gap); }
 
 .logo { text-decoration: none; }
-.logo__placeholder {
-  display: grid; place-items: center; width: 7rem; height: 3rem;
-  background: var(--color-placeholder); color: var(--color-placeholder-dark);
-  font-size: var(--fs-small); letter-spacing: var(--letter-caps);
-}
+.logo__img { display: block; height: 3rem; width: auto; }
+.logo--footer .logo__img { height: 8rem; }
 
 .site-nav { display: flex; align-items: center; gap: clamp(1rem, 3vw, 2.5rem); }
 .site-nav__list { display: flex; gap: clamp(1rem, 3vw, 2.5rem); }
