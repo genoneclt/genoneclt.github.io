@@ -80,7 +80,7 @@
   /* Links */
   --link-border-w: 3px;
   --link-gap-size: 5px;
-  --link-anim-duration: 500ms;
+  --link-anim-duration: 250ms;
 }
 
 /* ---------- 3. Themes ---------- */
