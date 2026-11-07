@@ -92,19 +92,7 @@ a { color: inherit; }
   display: block; width: 4rem; aspect-ratio: 1; background: var(--color-placeholder);
   clip-path: polygon(50% 0, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 }
-/* Icon SVGs are drawn as a mask over --ds-navy so they take the design-system colour.
-   Without mask support they fall back to the SVG's own colour. */
-.stat-card__icon { display: block; width: 4rem; height: 4rem; background: var(--icon) center / contain no-repeat; }
-.stat-card__icon--debt-free  { --icon: url("../assets/images/debt-free.svg"); }
-.stat-card__icon--enrolled   { --icon: url("../assets/images/enrolled.svg"); }
-.stat-card__icon--in-program { --icon: url("../assets/images/in-program.svg"); }
-@supports (mask-image: url(x)) or (-webkit-mask-image: url(x)) {
-  .stat-card__icon {
-    background: var(--ds-navy);
-    -webkit-mask: var(--icon) center / contain no-repeat;
-    mask: var(--icon) center / contain no-repeat;
-  }
-}
+.stat-card__icon { width: 4rem; height: 4rem; }
 .icon-placeholder--sm { width: 2.5rem; background: var(--color-dark); }
 .feature__image { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
 .image-placeholder { background: var(--color-placeholder); aspect-ratio: 4 / 3; width: 100%; }
