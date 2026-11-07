@@ -223,7 +223,8 @@
 }
 .btn-secondary:hover { background-color: var(--theme-sec-bg-hover); color: var(--theme-sec-fg-hover); }
 
-/* Link: 3px underline drawn as a background so a 5px gap can sweep across it */
+/* Link: no underline at rest. On hover/keyboard focus a 3px underline is drawn
+   as a background and a 5px gap sweeps across it. */
 .link {
   font-family: var(--font-body); font-weight: 700;
   font-size: var(--body-size); line-height: var(--body-lh); letter-spacing: var(--action-ls);
@@ -233,15 +234,17 @@
     var(--theme-link-border) 0 var(--link-gap, 100%),
     var(--theme-link-gap) var(--link-gap, 100%) calc(var(--link-gap, 100%) + var(--link-gap-size)),
     var(--theme-link-border) calc(var(--link-gap, 100%) + var(--link-gap-size)));
-  background-size: 100% var(--link-border-w);
+  background-size: 100% 0;
   background-position: left bottom;
   background-repeat: no-repeat;
   -webkit-box-decoration-break: clone; box-decoration-break: clone;
 }
+.link:hover, .link:focus-visible { background-size: 100% var(--link-border-w); }
 .link:hover, .link:focus-visible { animation: link-gap-sweep var(--link-anim-duration) linear 1 both; }
 @keyframes link-gap-sweep {
   /* Literal on purpose: var() inside keyframes breaks this animation. Keep equal to -1 × --link-gap-size. */
   from { --link-gap: -5px; }
   to   { --link-gap: 100%; }
 }
-@media (prefers-reduced-motion: reduce) { .link:hover, .link:focus-visible { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .link:hover, .link:focus-visible { background-size: 100% var(--link-border-w); }
+.link:hover, .link:focus-visible { animation: none; } }
