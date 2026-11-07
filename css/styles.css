@@ -291,6 +291,8 @@ a { color: inherit; }
 
 .section--compact { padding-block: clamp(2rem, 4vw, 3.5rem); }
 .image-placeholder--dark { background: var(--color-placeholder-dark); }
+/* Square, centre-cropped photo */
+.split__media--square { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; object-position: center; }
 
 /* Hero: dark panel with the outlined headline card, CTA straddling its bottom edge */
 .page-hero { padding-block: clamp(3rem, 8vw, 6rem) clamp(3.5rem, 8vw, 6.5rem); }
@@ -301,12 +303,10 @@ a { color: inherit; }
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 5vw, 4rem); align-items: start; }
 .split__body { display: flex; flex-direction: column; gap: 1rem; }
 .split__media { aspect-ratio: 1; }
-.split--faq { align-items: stretch; }
-.split--faq .split__media { aspect-ratio: auto; min-height: 20rem; }
+.split--faq { align-items: center; }
 @media (max-width: 52rem) {
   .split { grid-template-columns: 1fr; }
-  .split__media { aspect-ratio: 4 / 3; }
-  .split--faq .split__media { aspect-ratio: 4 / 3; min-height: 0; }
+  .split__media:not(.split__media--square) { aspect-ratio: 4 / 3; }
 }
 
 .prose { max-width: 48rem; margin-inline: auto; text-align: center; display: flex; flex-direction: column; gap: 1rem; }
