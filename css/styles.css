@@ -46,6 +46,8 @@
   --border-w: 1px;
 
   /* Components */
+  --hero-card-opacity: .6;          /* hero card translucency (0–1) */
+  --hero-card-blur: 12px;           /* hero card background blur */
   --hero-focus: center;             /* which part of the photo stays visible when cropped, e.g. "center top" */
   --hero-h: clamp(22rem, 55vw, 36rem);
   --flyout-size: 4.5rem;
@@ -147,6 +149,17 @@ a { color: inherit; }
   position: relative; max-width: 30rem;
   padding: clamp(1.25rem, 3vw, 2.25rem) clamp(1.25rem, 3vw, 2.5rem) clamp(2rem, 4vw, 3rem);
   border: 2px solid currentColor; border-radius: var(--radius);
+  /* Frosted glass: translucent theme background + blur of the photo behind it.
+     First declaration is the fallback for browsers without color-mix(). */
+  background-color: rgb(44 61 111 / var(--hero-card-opacity));
+  background-color: color-mix(in srgb, var(--theme-bg) calc(var(--hero-card-opacity) * 100%), transparent);
+  -webkit-backdrop-filter: blur(var(--hero-card-blur)) saturate(1.2);
+  backdrop-filter: blur(var(--hero-card-blur)) saturate(1.2);
+  box-shadow: 0 8px 32px rgb(0 0 0 / .25);
+}
+/* No backdrop-filter support: go more opaque so text stays readable over the photo */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .hero__card { --hero-card-opacity: .85; }
 }
 .hero__title { font-family: var(--font-display); font-size: var(--fs-h-hero); font-weight: 400; text-transform: uppercase; line-height: 1.15; }
 .hero__cta {
