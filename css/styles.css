@@ -49,7 +49,7 @@
   --hero-focus: center;             /* which part of the photo stays visible when cropped, e.g. "center top" */
   --hero-h: clamp(22rem, 55vw, 36rem);
   --flyout-size: 4.5rem;
-  --flyout-bottom: 20vh;            /* keeps it in the bottom fourth */
+  --flyout-bottom: 10vh;            /* keeps it in the bottom fourth */
   --transition: .2s ease;
 }
 
