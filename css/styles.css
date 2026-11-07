@@ -201,7 +201,7 @@ a { color: inherit; }
 .feature { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); align-items: start; margin-top: clamp(2rem, 5vw, 4rem); }
 .feature:first-of-type { margin-top: 0; }
 .feature--reverse .feature__media { order: 2; }
-.feature__media figcaption { margin-top: .75rem; font-size: var(--fs-small); border: var(--border-w) solid var(--color-border-inverse); padding: .5rem .75rem; }
+.feature__media figcaption { margin-top: .75rem; font-size: var(--fs-small); padding: .5rem .75rem; }
 .video-frame { aspect-ratio: 16 / 9; background: var(--color-placeholder-dark); }
 .video-frame iframe { width: 100%; height: 100%; border: 0; }
 .feature__body { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
