@@ -200,7 +200,9 @@ a { color: inherit; }
 
 /* ---------- Scholars strip ---------- */
 .scholar-strip { display: grid; grid-template-columns: repeat(6, 1fr); gap: .25rem; margin-bottom: clamp(2rem, 5vw, 4rem); }
-.scholar-strip__item { background: var(--color-placeholder); aspect-ratio: 3 / 5; }
+.scholar-strip__item { background: var(--color-placeholder); aspect-ratio: 3 / 5; overflow: hidden; }
+/* Crop to the tile; bias toward the top so faces stay in frame */
+.scholar-strip__item img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
 @media (max-width: 52rem) { .scholar-strip { grid-template-columns: repeat(3, 1fr); } .scholar-strip__item { aspect-ratio: 3 / 4; } }
 
 /* ---------- Feature rows ---------- */
