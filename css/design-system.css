@@ -1,0 +1,246 @@
+/* ==========================================================================
+   GenOne Design System
+   --------------------------------------------------------------------------
+   1. Fonts
+   2. Palette + type tokens (change brand values here)
+   3. Themes  — .theme-light-1 | .theme-light-2 | .theme-dark
+                Themes are palettes for individual panels/containers,
+                not for the whole site. They can be nested.
+   4. Type styles — .eyebrow .h-large .h-medium .h-small .body-bold .body
+   5. Components  — .btn-cta .btn-secondary .link
+   Components read only --theme-* variables, so a new theme is just a new
+   block of variable assignments in section 3.
+   ========================================================================== */
+
+/* ---------- 1. Fonts ---------- */
+@import url("https://p.typekit.net/p.css?s=1&k=udr0xdu&ht=tk&f=10873.10874&a=477317845&app=typekit&e=css");
+
+/* Adonis (Adobe Fonts / Typekit) — Bold 700 only */
+@font-face {
+    font-family:"Adonis";
+    src:url("https://use.typekit.net/af/4dfd53/00000000000000007758da26/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"),url("https://use.typekit.net/af/4dfd53/00000000000000007758da26/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"),url("https://use.typekit.net/af/4dfd53/00000000000000007758da26/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype");
+    font-display:auto;
+    font-style:normal;
+    font-weight:700;
+    font-stretch:normal;
+}
+
+/* Poppins (self-hosted) — one face per file in assets/fonts */
+@font-face { font-family: "Poppins"; src: url("../assets/fonts/Poppins-Regular.ttf") format("truetype");        font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Poppins"; src: url("../assets/fonts/Poppins-Medium.ttf") format("truetype");         font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Poppins"; src: url("../assets/fonts/Poppins-SemiBold.ttf") format("truetype");       font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Poppins"; src: url("../assets/fonts/Poppins-SemiBoldItalic.ttf") format("truetype"); font-weight: 600; font-style: italic; font-display: swap; }
+@font-face { font-family: "Poppins"; src: url("../assets/fonts/Poppins-Bold.ttf") format("truetype");           font-weight: 700; font-style: normal; font-display: swap; }
+
+/* ---------- 2. Tokens ---------- */
+/* Registered so the link-underline gap can be animated (Baseline 2024).
+   Browsers without @property simply skip the animation. */
+@property --link-gap {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+
+:root {
+  /* Brand palette */
+  --ds-navy:        #2c3d6f;
+  --ds-red:         #b72f2a;
+  --ds-teal:        #05616a;
+  --ds-teal-dark:   #03484f;
+  --ds-green:       #9bba6f;
+  --ds-sky:         #bcd7fe;
+  --ds-ice:         #f3f8ff;
+  --ds-white:       #ffffff;
+
+  /* Font families */
+  --font-body:    "Poppins", system-ui, -apple-system, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Adonis", Georgia, "Times New Roman", serif;
+
+  /* Type scale. Spec sizes are the maximums; large sizes scale down on small
+     viewports. Line heights are unitless ratios of the spec (e.g. 70/75). */
+  --eyebrow-size: 1rem;           --eyebrow-lh: 1.375;      --eyebrow-ls: .2em;
+  --h-large-size: clamp(2.75rem, 1.6rem + 4.6vw, 4.6875rem);  /* 75px */
+  --h-large-lh:   .9333;                                      /* 70px */
+  --h-large-ls:   -.04em;
+  --h-medium-size: clamp(1.5rem, 1.1rem + 1.6vw, 2rem);       /* 32px */
+  --h-medium-lh:   1.0625;                                    /* 34px */
+  --h-small-size:  clamp(1.5rem, 1.2rem + 1.2vw, 1.875rem);   /* 30px */
+  --h-small-lh:    .9333;                                     /* 28px */
+  --h-small-ls:    -.02em;
+  --body-size: 1rem;              --body-lh: 1.375;         /* 16 / 22px */
+  --action-ls: .04em;
+
+  /* Buttons */
+  --btn-height: 3rem;                                  /* 48px */
+  --btn-radius: 4px 25px 4px 25px;                     /* TL TR BR BL */
+  --btn-pad-x: 2em;
+  --btn-border-w: 3px;
+  --btn-transition: background-color .2s ease, color .2s ease;
+
+  /* Links */
+  --link-border-w: 3px;
+  --link-gap-size: 5px;
+  --link-anim-duration: 500ms;
+}
+
+/* ---------- 3. Themes ---------- */
+.theme-light-1,
+.theme-light-2,
+.theme-dark {
+  background-color: var(--theme-bg);
+  color: var(--theme-body);
+}
+
+.theme-light-1 {
+  --theme-bg:          var(--ds-white);
+  --theme-eyebrow:     var(--ds-navy);
+  --theme-h-large:     var(--ds-navy);
+  --theme-h-medium:    var(--ds-red);
+  --theme-h-small:     var(--ds-navy);
+  --theme-body-bold:   var(--ds-navy);
+  --theme-body:        var(--ds-navy);
+
+  --theme-cta-bg:      var(--ds-teal);
+  --theme-cta-fg:      var(--ds-white);
+  --theme-cta-bg-hover: var(--ds-teal-dark);
+  --theme-cta-fg-hover: var(--ds-white);
+
+  --theme-link:        var(--ds-navy);
+  --theme-link-border: var(--ds-red);
+  --theme-link-gap:    transparent;
+
+  --theme-sec-bg:      var(--ds-white);
+  --theme-sec-fg:      var(--ds-navy);
+  --theme-sec-border:  var(--ds-green);
+  --theme-sec-bg-hover: var(--ds-green);
+  --theme-sec-fg-hover: var(--ds-navy);
+}
+
+/* Light 2: identical to Light 1 except the background */
+.theme-light-2 {
+  --theme-bg: var(--ds-ice);
+  --theme-eyebrow:     var(--ds-navy);
+  --theme-h-large:     var(--ds-navy);
+  --theme-h-medium:    var(--ds-red);
+  --theme-h-small:     var(--ds-navy);
+  --theme-body-bold:   var(--ds-navy);
+  --theme-body:        var(--ds-navy);
+  --theme-cta-bg:      var(--ds-teal);
+  --theme-cta-fg:      var(--ds-white);
+  --theme-cta-bg-hover: var(--ds-teal-dark);
+  --theme-cta-fg-hover: var(--ds-white);
+  --theme-link:        var(--ds-navy);
+  --theme-link-border: var(--ds-red);
+  --theme-link-gap:    transparent;
+  --theme-sec-bg:      var(--ds-white);
+  --theme-sec-fg:      var(--ds-navy);
+  --theme-sec-border:  var(--ds-green);
+  --theme-sec-bg-hover: var(--ds-green);
+  --theme-sec-fg-hover: var(--ds-navy);
+}
+
+.theme-dark {
+  /* Panel background was not specified; navy matches the link-gap colour. */
+  --theme-bg:          var(--ds-navy);
+  --theme-eyebrow:     var(--ds-white);
+  --theme-h-large:     var(--ds-white);
+  --theme-h-medium:    var(--ds-sky);
+  --theme-h-small:     var(--ds-white);
+  --theme-body-bold:   var(--ds-white);
+  --theme-body:        var(--ds-white);
+
+  --theme-cta-bg:      var(--ds-sky);
+  --theme-cta-fg:      var(--ds-navy);
+  --theme-cta-bg-hover: var(--ds-white);
+  --theme-cta-fg-hover: var(--ds-navy);
+
+  --theme-link:        var(--ds-white);
+  --theme-link-border: var(--ds-white);
+  --theme-link-gap:    var(--ds-navy);
+
+  --theme-sec-bg:      var(--ds-navy);
+  --theme-sec-fg:      var(--ds-white);
+  --theme-sec-border:  var(--ds-green);
+  --theme-sec-bg-hover: var(--ds-green);
+  --theme-sec-fg-hover: var(--ds-navy);
+}
+
+/* ---------- 4. Type styles ---------- */
+.eyebrow {
+  font-family: var(--font-body); font-weight: 700;
+  font-size: var(--eyebrow-size); line-height: var(--eyebrow-lh); letter-spacing: var(--eyebrow-ls);
+  text-transform: uppercase; color: var(--theme-eyebrow);
+}
+.h-large {
+  font-family: var(--font-display); font-weight: 700; font-style: normal;
+  font-size: var(--h-large-size); line-height: var(--h-large-lh); letter-spacing: var(--h-large-ls);
+  text-transform: lowercase; color: var(--theme-h-large);
+}
+.h-medium {
+  font-family: var(--font-body); font-weight: 700;
+  font-size: var(--h-medium-size); line-height: var(--h-medium-lh);
+  text-transform: uppercase; color: var(--theme-h-medium);
+}
+/* Title Case: CSS can only capitalise every word, so write copy in Title Case too. */
+.h-small {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: var(--h-small-size); line-height: var(--h-small-lh); letter-spacing: var(--h-small-ls);
+  text-transform: capitalize; color: var(--theme-h-small);
+}
+.body-bold {
+  font-family: var(--font-body); font-weight: 700;
+  font-size: var(--body-size); line-height: var(--body-lh); color: var(--theme-body-bold);
+}
+.body {
+  font-family: var(--font-body); font-weight: 400;
+  font-size: var(--body-size); line-height: var(--body-lh); color: var(--theme-body);
+}
+
+/* ---------- 5. Components ---------- */
+.btn-cta,
+.btn-secondary {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: var(--btn-height); padding-inline: var(--btn-pad-x);
+  font-family: var(--font-body); font-size: var(--body-size); line-height: var(--body-lh);
+  letter-spacing: var(--action-ls); text-transform: uppercase; text-align: center; text-decoration: none;
+  border-radius: var(--btn-radius); cursor: pointer;
+  transition: var(--btn-transition);
+}
+
+/* CTA */
+.btn-cta {
+  font-weight: 400;
+  color: var(--theme-cta-fg); background-color: var(--theme-cta-bg);
+  border: 0;
+}
+.btn-cta:hover { background-color: var(--theme-cta-bg-hover); color: var(--theme-cta-fg-hover); }
+
+/* Secondary */
+.btn-secondary {
+  font-weight: 700;
+  color: var(--theme-sec-fg); background-color: var(--theme-sec-bg);
+  border: var(--btn-border-w) solid var(--theme-sec-border);
+}
+.btn-secondary:hover { background-color: var(--theme-sec-bg-hover); color: var(--theme-sec-fg-hover); }
+
+/* Link: 3px underline drawn as a background so a 5px gap can sweep across it */
+.link {
+  font-family: var(--font-body); font-weight: 700;
+  font-size: var(--body-size); line-height: var(--body-lh); letter-spacing: var(--action-ls);
+  text-transform: uppercase; text-decoration: none; color: var(--theme-link);
+  padding-bottom: 2px;
+  background-image: linear-gradient(to right,
+    var(--theme-link-border) 0 var(--link-gap, 100%),
+    var(--theme-link-gap) var(--link-gap, 100%) calc(var(--link-gap, 100%) + var(--link-gap-size)),
+    var(--theme-link-border) calc(var(--link-gap, 100%) + var(--link-gap-size)));
+  background-size: 100% var(--link-border-w);
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+.link:hover, .link:focus-visible { animation: link-gap-sweep var(--link-anim-duration) linear 1 both; }
+@keyframes link-gap-sweep {
+  from { --link-gap: calc(var(--link-gap-size) * -1); }
+  to   { --link-gap: 100%; }
+}
+@media (prefers-reduced-motion: reduce) { .link:hover, .link:focus-visible { animation: none; } }
