@@ -92,6 +92,7 @@ a { color: inherit; }
   display: block; width: 4rem; aspect-ratio: 1; background: var(--color-placeholder);
   clip-path: polygon(50% 0, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 }
+.stat-card__icon { width: 4rem; height: 4rem; }
 .icon-placeholder--sm { width: 2.5rem; background: var(--color-dark); }
 .feature__image { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
 .image-placeholder { background: var(--color-placeholder); aspect-ratio: 4 / 3; width: 100%; }
