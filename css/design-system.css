@@ -240,7 +240,8 @@
 }
 .link:hover, .link:focus-visible { animation: link-gap-sweep var(--link-anim-duration) linear 1 both; }
 @keyframes link-gap-sweep {
-  from { --link-gap: calc(var(--link-gap-size) * -1); }
+  /* Literal on purpose: var() inside keyframes breaks this animation. Keep equal to -1 × --link-gap-size. */
+  from { --link-gap: -5px; }
   to   { --link-gap: 100%; }
 }
 @media (prefers-reduced-motion: reduce) { .link:hover, .link:focus-visible { animation: none; } }
