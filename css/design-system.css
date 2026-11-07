@@ -246,5 +246,4 @@
   from { --link-gap: -5px; }
   to   { --link-gap: 100%; }
 }
-@media (prefers-reduced-motion: reduce) { .link:hover, .link:focus-visible { background-size: 100% var(--link-border-w); }
-.link:hover, .link:focus-visible { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .link:hover, .link:focus-visible { animation: none; } }
